@@ -1,0 +1,23 @@
+version: "3"
+services:
+  mysql:
+    image: ${MYSQL_DOCKER_IMAGE}
+    environment:
+      TZ: "Asia/Seoul"
+      MYSQL_DATABASE: "{{ mysql_database }}"
+      MYSQL_ROOT_PASSWORD: "{{ mysql_root_password }}"
+    ports:
+      - {{ mysql_port }}:3306
+  flyway:
+    image: ${DOCKER_IMAGE}
+    container_name: flyway
+    user: root
+    environment:
+      TZ: "Asia/Seoul"
+    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    volumes:
+      - {{ flyway_data }}/conf/flyway.config:/flyway/conf/flyway.config
+      - {{ flyway_data }}/sql:/flyway/sql
+    depends_on:
+      - mysql
+    restart: unless-stopped

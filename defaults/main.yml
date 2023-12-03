@@ -1,0 +1,27 @@
+---
+image_registry_server: "docker.io"
+flyway_image: "flyway/flyway"
+flyway_ver: "latest"
+mysql_image: "library/mysql"
+mysql_ver: "latest"
+mysql_port: 3306
+mysql_database: demodb
+mysql_root_password: asdfg1
+mysql_driver: com.mysql.cj.jdbc.Driver
+
+docker_compose_bin: "docker-compose"
+use_dkr_net: false
+use_traefik: false
+use_traefik_tls: false
+dkr_network: devops_net
+use_extra_hosts: false
+add_etc_host: "10.11.22.10   devops.com"
+
+app_home_dir: /app
+app_data_dir: /data
+app_logs_dir: /log
+
+create_user: false
+adm_user: "appadm"
+adm_group: "appadm"
+adm_uid: "1000"

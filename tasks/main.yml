@@ -1,0 +1,27 @@
+---
+- name: Creates directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ adm_user }}"
+    group: "{{ adm_group }}"
+    mode: '0755'
+    force: false
+  with_items:
+    - "{{ flyway_home }}"
+    - "{{ flyway_data }}"
+    - "{{ flyway_data }}/conf"
+    - "{{ flyway_data }}/sql"
+    - "{{ flyway_logs }}"
+
+- name: Copy file
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ adm_user }}"
+    group: "{{ adm_group }}"
+    mode: '0644'
+    backup: true
+  with_items:
+    - { src: '.env.j2', dest: '{{ flyway_home }}/.env' }
+    - { src: 'docker-compose.yml.j2', dest: '{{ flyway_home }}/docker-compose.yml' }
