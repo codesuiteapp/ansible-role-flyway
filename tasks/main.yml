@@ -25,3 +25,5 @@
   with_items:
     - { src: '.env.j2', dest: '{{ flyway_home }}/.env' }
     - { src: 'docker-compose.yml.j2', dest: '{{ flyway_home }}/docker-compose.yml' }
+  notify:
+    Restart flyway
