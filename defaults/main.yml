@@ -6,6 +6,7 @@ mysql_image: "library/mysql"
 mysql_ver: "latest"
 mysql_port: 3306
 mysql_database: demodb
+mysql_user: "root"
 mysql_root_password: asdfg1
 mysql_driver: com.mysql.cj.jdbc.Driver
 

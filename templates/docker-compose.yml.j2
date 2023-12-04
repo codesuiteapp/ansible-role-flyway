@@ -14,10 +14,11 @@ services:
     user: root
     environment:
       TZ: "Asia/Seoul"
-    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    command: -configFiles=/flyway/conf/flyway.conf -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     volumes:
-      - {{ flyway_data }}/conf/flyway.config:/flyway/conf/flyway.config
+      - {{ flyway_data }}/conf/flyway.conf:/flyway/conf/flyway.conf
       - {{ flyway_data }}/sql:/flyway/sql
+      - {{ flyway_data }}/drivers:/flyway/drivers
     depends_on:
       - mysql
     restart: unless-stopped
