@@ -1,13 +1,14 @@
 version: "3"
 services:
-  mysql:
-    image: ${MYSQL_DOCKER_IMAGE}
-    environment:
-      TZ: "Asia/Seoul"
-      MYSQL_DATABASE: "{{ mysql_database }}"
-      MYSQL_ROOT_PASSWORD: "{{ mysql_root_password }}"
-    ports:
-      - {{ mysql_port }}:3306
+  # mysql:
+  #   image: ${MYSQL_DOCKER_IMAGE}
+  #   environment:
+  #     - TZ="Asia/Seoul"
+  #     - MYSQL_ROOT_HOST=%
+  #     - MYSQL_DATABASE="{{ mysql_database }}"
+  #     - MYSQL_ROOT_PASSWORD="{{ mysql_root_password }}"
+  #   ports:
+  #     - {{ mysql_port }}:3306
   flyway:
     image: ${DOCKER_IMAGE}
     container_name: flyway
@@ -19,6 +20,6 @@ services:
       - {{ flyway_data }}/conf/flyway.conf:/flyway/conf/flyway.conf
       - {{ flyway_data }}/sql:/flyway/sql
       - {{ flyway_data }}/drivers:/flyway/drivers
-    depends_on:
-      - mysql
+    # depends_on:
+    #   - mysql
     restart: unless-stopped
