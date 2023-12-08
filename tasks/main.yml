@@ -27,5 +27,3 @@
     - { src: '.env.j2', dest: '{{ flyway_home }}/.env' }
     - { src: 'docker-compose.yml.j2', dest: '{{ flyway_home }}/docker-compose.yml' }
     - { src: 'flyway.conf.j2', dest: '{{ flyway_data }}/conf' }
-  notify:
-    Restart flyway
