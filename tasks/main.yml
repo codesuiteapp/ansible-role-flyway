@@ -10,7 +10,7 @@
   with_items:
     - "{{ flyway_home }}"
     - "{{ flyway_home }}/drivers"
-    - "{{ flyway_data }}/sql"
+    - "{{ flyway_data }}"
     - "{{ flyway_logs }}"
 
 - name: Copy Drivers
@@ -23,6 +23,7 @@
   with_items:
     - { src: "mysql-connector-j-8.1.0.jar", dest: "{{ flyway_home }}/drivers" }
     - { src: "jackson-databind-2.15.3.jar", dest: "{{ flyway_home }}/drivers" }
+    - { src: "V1__init.sql", dest: "{{ flyway_data }}" }
 
 - name: Copy file
   ansible.builtin.template:
