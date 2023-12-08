@@ -5,8 +5,8 @@ flyway_ver: "latest"
 flyway_url: "jdbc:mysql://mysql:{{ mysql_port }}/{{ mysql_database }}"
 
 use_mysql: false
-# mysql_image: "library/mysql"
-# mysql_ver: "latest"
+mysql_image: "library/mysql"
+mysql_ver: "latest"
 mysql_port: 3306
 mysql_database: demodb
 mysql_user: "root"
