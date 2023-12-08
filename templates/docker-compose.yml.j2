@@ -9,6 +9,9 @@ services:
       - FLYWAY_URL="{{ flyway_url }}"
       - FLYWAY_USER="{{ flyway_user }}"
       - FLYWAY_PASSWORD="{{ flyway_password }}"
+      - FLYWAY_JAR_DIRS="{{ flyway_home }}/jars"
+    command: [ "migrate" ]
     volumes:
+      - {{ flyway_home }}/jars:/flyway/jars
       - {{ flyway_data }}/sql:/flyway/sql
     restart: unless-stopped

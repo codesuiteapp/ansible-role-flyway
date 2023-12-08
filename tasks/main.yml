@@ -9,9 +9,20 @@
     force: false
   with_items:
     - "{{ flyway_home }}"
-    - "{{ flyway_data }}"
+    - "{{ flyway_home }}/jars"
     - "{{ flyway_data }}/sql"
     - "{{ flyway_logs }}"
+
+- name: Copy Drivers
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ adm_user }}"
+    group: "{{ adm_group }}"
+    mode: '0644'
+    remote_src: true
+  with_items:
+    - { src: "mysql-connector-j-8.1.0.jar", dest: "{{ flyway_home }}/jars" }
 
 - name: Copy file
   ansible.builtin.template:
