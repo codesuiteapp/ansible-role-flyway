@@ -6,13 +6,13 @@ services:
     user: root
     environment:
       - "TZ=Asia/Seoul"
-      - "FLYWAY_JAR_DIRS=/flyway/jars"
-      - "FLYWAY_LOCATIONS=/flyway/sql"
+      - "FLYWAY_JAR_DIRS=/flyway/drivers"
+      - "FLYWAY_LOCATIONS=filesystem:/flyway/sql"
       - "FLYWAY_URL={{ flyway_url }}"
       - "FLYWAY_USER={{ flyway_user }}"
       - "FLYWAY_PASSWORD={{ flyway_password }}"
     command: [ "migrate" ]
     volumes:
-      - {{ flyway_home }}/jars:/flyway/jars
-      - {{ flyway_data }}/sql:/flyway/sql
+      - {{ flyway_home }}/drivers:/flyway/drivers
+      - {{ flyway_data }}:/flyway/sql
     restart: unless-stopped
