@@ -10,9 +10,7 @@
   with_items:
     - "{{ flyway_home }}"
     - "{{ flyway_data }}"
-    - "{{ flyway_data }}/conf"
     - "{{ flyway_data }}/sql"
-    - "{{ flyway_data }}/drivers"
     - "{{ flyway_logs }}"
 
 - name: Copy file
@@ -26,4 +24,3 @@
   with_items:
     - { src: '.env.j2', dest: '{{ flyway_home }}/.env' }
     - { src: 'docker-compose.yml.j2', dest: '{{ flyway_home }}/docker-compose.yml' }
-    - { src: 'flyway.conf.j2', dest: '{{ flyway_data }}/conf' }
