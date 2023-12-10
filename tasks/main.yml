@@ -38,6 +38,6 @@
     - { src: 'docker-compose.yml.j2', dest: '{{ flyway_home }}/docker-compose.yml' }
 
 - name: Restart flyway
-  shell: echo success
+  ansible.builtin.shell: echo success
   notify:
     Restart flyway
