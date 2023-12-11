@@ -1,4 +1,1 @@
 ---
-flyway_home: "{{ app_home_dir }}/flyway-docker"
-flyway_data: "{{ app_data_dir }}/flyway"
-flyway_logs: "{{ app_logs_dir }}/flyway"

@@ -21,6 +21,10 @@ app_home_dir: /app
 app_data_dir: /data
 app_logs_dir: /log
 
+flyway_home: "{{ app_home_dir }}/flyway-docker"
+flyway_data: "{{ app_data_dir }}/flyway"
+flyway_logs: "{{ app_logs_dir }}/flyway"
+
 create_user: false
 adm_user: "appadm"
 adm_group: "appadm"
