@@ -3,6 +3,7 @@ image_registry_server: "docker.io"
 flyway_image: "flyway/flyway"
 flyway_ver: "latest"
 flyway_url: "jdbc:mysql://mysql:{{ mysql_port }}/{{ mysql_database }}"
+container_name: flyway
 
 mysql_port: 3306
 mysql_database: demodb
