@@ -21,7 +21,7 @@
     group: "{{ adm_group }}"
     mode: '0644'
   with_items:
-    - { src: "mysql-connector-j-8.1.0.jar", dest: "{{ flyway_home }}/drivers" }
+    - { src: "mysql-connector-j-8.3.0.jar", dest: "{{ flyway_home }}/drivers" }
     - { src: "jackson-databind-2.15.3.jar", dest: "{{ flyway_home }}/drivers" }
     - { src: "V1__Init_Example.sql", dest: "{{ flyway_data }}" }
 
