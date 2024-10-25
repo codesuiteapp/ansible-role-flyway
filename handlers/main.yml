@@ -1,15 +1,24 @@
+---
 - name: Start flyway
   ansible.builtin.command: "{{ docker_compose_bin }} up --detach"
   args:
     chdir: "{{ flyway_home }}"
   register: result
-  changed_when: result.changed
+  changed_when: result.rc != 0
 
-- name: Restart flyway
-  ansible.builtin.shell:
-    "{{ docker_compose_bin }} down; {{ docker_compose_bin }} up --detach"
+- name: Stop flyway
+  ansible.builtin.command: "{{ docker_compose_bin }} down"
   args:
     chdir: "{{ flyway_home }}"
   register: result
-  changed_when: result.changed
+  changed_when: result.rc != 0
+
+- name: Restart flyway
+  ansible.builtin.shell: |
+    {{ docker_compose_bin }} down
+    {{ docker_compose_bin }} up --detach
+  args:
+    chdir: "{{ flyway_home }}"
+  register: result
+  changed_when: result.rc != 0
   ignore_errors: true
