@@ -5,11 +5,11 @@ services:
     user: root
     environment:
       - "TZ=Asia/Seoul"
-      - "FLYWAY_JAR_DIRS=/flyway/drivers"
-      - "FLYWAY_LOCATIONS=filesystem:/flyway/sql"
       - "FLYWAY_URL={{ flyway_url }}"
       - "FLYWAY_USER={{ flyway_user }}"
       - "FLYWAY_PASSWORD={{ flyway_password }}"
+      - "FLYWAY_JAR_DIRS=/flyway/drivers"
+      - "FLYWAY_LOCATIONS=filesystem:/flyway/sql"
     command: [ "migrate" ]
     volumes:
       - {{ flyway_home }}/drivers:/flyway/drivers
